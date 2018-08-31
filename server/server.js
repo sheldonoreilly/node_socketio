@@ -15,6 +15,20 @@ app.use(express.static(publicPath));
 io.on("connection", socket => {
 	console.log("New user connected");
 
+	//admin send a welcome message to new user only
+	socket.emit("newMessage", {
+		from: "Admin",
+		text: "Welcome to chat!",
+		createdAt: new Date().getTime()
+	});
+
+	//admin send a 'new user join' message to everyone but the new user
+	socket.broadcast.emit("newMessage", {
+		from: "Admin",
+		text: "New user joined",
+		createdAt: new Date().getTime()
+	});
+
 	//recieves a message from 'a' client
 	socket.on("createMessage", message => {
 		console.log("createMessage", message);
@@ -27,6 +41,9 @@ io.on("connection", socket => {
 			//this prevents user 'spoofing' of time sent
 			createdAt: new Date().getTime()
 		});
+
+		// broadcast send to all users but self
+		// socket.broadcast.emit("newMessage", { ...
 	});
 
 	socket.on("disconnect", () => {
