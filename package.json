@@ -1,0 +1,24 @@
+{
+	"name": "node_socketio",
+	"version": "1.0.0",
+	"description": "Node app using socketio to real-time chat app.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node server/server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"engines": {
+		"node": "6.2.2"
+	},
+	"keywords": [
+		"node",
+		"socket.io",
+		"moustache",
+		"jquery"
+	],
+	"author": "Sheldon O'Reilly",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.14.0"
+	}
+}
